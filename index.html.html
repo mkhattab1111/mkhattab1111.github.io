@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Mohamed Ashraf Khattab — OT/ICS &amp; Network Security</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#F2EFEA; --ink:#241811; --brown:#3B2415; --brown-soft:#2E1C10;
+    --white:#FFFFFF; --muted:#7A6C60; --muted-on-brown:#C9B8AC; --line:#DAD3C9;
+    box-sizing:border-box;
+    padding-top:env(safe-area-inset-top,0px);
+    padding-bottom:env(safe-area-inset-bottom,0px);
+  }
+  *{box-sizing:inherit;}
+  html{scroll-padding-top:env(safe-area-inset-top,0px);}
+  html,body{margin:0;background:var(--bg);color:var(--ink);}
+  body{font-family:"IBM Plex Sans",system-ui,sans-serif;line-height:1.5;}
+  a{color:inherit;}
+  .wrap{max-width:900px;margin:0 auto;padding:0 24px;}
+  .label{font-family:"Space Grotesk",sans-serif;font-weight:700;text-transform:uppercase;letter-spacing:.06em;font-size:13px;}
+  .display{font-family:"Anton",sans-serif;font-weight:400;text-transform:uppercase;letter-spacing:.01em;line-height:.92;margin:0;}
+
+  nav{display:flex;justify-content:space-between;align-items:center;padding:20px 24px;border-bottom:1px solid var(--line);}
+  nav .label{font-size:13px;}
+  nav .links{display:flex;gap:28px;}
+  nav .links a{text-decoration:none;}
+
+  header.hero{padding:72px 0 0;}
+  header.hero .display{font-size:clamp(56px,12vw,128px);}
+  header.hero .sub{margin-top:18px;}
+  header.hero p.role{max-width:56ch;color:var(--muted);font-size:17px;margin:18px 0 0;}
+
+  .meta-bar{background:var(--brown);color:var(--white);margin-top:48px;padding:22px 24px;display:grid;grid-template-columns:repeat(4,1fr);gap:16px;}
+  @media (max-width:680px){.meta-bar{grid-template-columns:repeat(2,1fr);}}
+  .meta-bar .label{color:var(--muted-on-brown);font-size:11px;margin-bottom:6px;}
+  .meta-bar .val{font-family:"Space Grotesk",sans-serif;font-weight:700;font-size:15px;}
+
+  section{padding:56px 0;}
+  .section-head{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:24px;}
+  .section-head .label{color:var(--brown);}
+  section p.intro{color:var(--muted);max-width:66ch;font-size:16px;}
+
+  .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border:1px solid var(--line);}
+  @media (max-width:680px){.grid3{grid-template-columns:1fr;}}
+  .focus-card{padding:22px;border-right:1px solid var(--line);}
+  .focus-card:last-child{border-right:none;}
+  .focus-card .label{color:var(--brown);font-size:11px;}
+  .focus-card h3{font-family:"Space Grotesk",sans-serif;font-size:17px;margin:10px 0 8px;}
+  .focus-card p{margin:0;font-size:14px;color:var(--muted);}
+
+  .cases{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border:1px solid var(--line);}
+  @media (max-width:900px){.cases{grid-template-columns:1fr;}}
+  .case{padding:28px;border-right:1px solid var(--line);}
+  .case:last-child{border-right:none;}
+  .case.dark{background:var(--brown);color:var(--white);}
+  .sev{display:flex;gap:4px;margin-bottom:16px;}
+  .sev span{width:14px;height:14px;background:var(--line);}
+  .case.dark .sev span{background:rgba(255,255,255,.25);}
+  .sev span.on{background:var(--brown);}
+  .case.dark .sev span.on{background:var(--white);}
+  .case .claim{font-family:"Space Grotesk",sans-serif;font-weight:700;font-size:19px;line-height:1.3;margin:0 0 28px;}
+  .case-foot{display:flex;align-items:center;gap:12px;}
+  .mono-box{width:38px;height:38px;background:var(--brown);color:var(--white);display:flex;align-items:center;justify-content:center;font-family:"Space Grotesk",sans-serif;font-weight:700;font-size:12px;flex-shrink:0;}
+  .case.dark .mono-box{background:var(--white);color:var(--brown);}
+  .case-foot .name{font-family:"Space Grotesk",sans-serif;font-weight:700;font-size:14px;}
+  .case-foot .role{font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.04em;}
+  .case.dark .case-foot .role{color:var(--muted-on-brown);}
+  .case a.link{display:inline-block;margin-top:16px;font-size:12px;text-decoration:none;border-bottom:1px solid currentColor;font-family:"Space Grotesk",sans-serif;font-weight:700;letter-spacing:.03em;}
+
+  .certs div{display:flex;justify-content:space-between;gap:16px;padding:14px 0;border-bottom:1px solid var(--line);font-size:14px;}
+  .certs div:last-child{border-bottom:none;}
+  .certs span.date{color:var(--muted);font-size:12px;white-space:nowrap;font-family:"Space Grotesk",sans-serif;font-weight:600;}
+
+  .skill-row{margin-bottom:12px;font-size:14px;}
+  .skill-row b{font-family:"Space Grotesk",sans-serif;}
+  .skill-row span{color:var(--muted);}
+
+  footer{background:var(--brown);color:var(--white);padding:40px 24px 56px;}
+  footer .wrap{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:20px;}
+  .contact-links{display:flex;gap:24px;flex-wrap:wrap;}
+  .contact-links a{text-decoration:none;border-bottom:1px solid rgba(255,255,255,.4);padding-bottom:2px;font-family:"Space Grotesk",sans-serif;font-weight:700;font-size:13px;}
+  footer .fine{color:var(--muted-on-brown);font-size:12px;}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="label">KHATTAB</div>
+  <div class="links">
+    <a class="label" href="#work">WORK</a>
+    <a class="label" href="#certs">CERTS</a>
+    <a class="label" href="#contact">CONTACT</a>
+  </div>
+  <div class="label">OT/ICS SECURITY</div>
+</nav>
+
+<div class="wrap">
+  <header class="hero">
+    <h1 class="display">SECURING<br>CONTROL SYSTEMS</h1>
+    <p class="role">Mohamed Ashraf Khattab — Communications and Computer Engineering student building a career in OT/ICS and network security, through hands-on vulnerability assessment and detection engineering.</p>
+  </header>
+</div>
+
+<div class="meta-bar">
+  <div><div class="label">Focus</div><div class="val">OT/ICS SECURITY</div></div>
+  <div><div class="label">Status</div><div class="val">STUDENT, 2028</div></div>
+  <div><div class="label">Cases</div><div class="val">3 COMPLETED</div></div>
+  <div><div class="label">Based In</div><div class="val">CAIRO, EGYPT</div></div>
+</div>
+
+<div class="wrap">
+  <section id="about">
+    <p class="intro">My hands-on work centers on assessing industrial control systems against their actual attack surface — enumerating protocols, verifying vulnerabilities against primary sources like CISA and NVD, and mapping findings to MITRE ATT&amp;CK for ICS. I document what I did and verify what I claim; I'm a student and practitioner, not a finished expert.</p>
+  </section>
+
+  <section id="focus">
+    <div class="section-head"><span class="label">01 — FOCUS AREAS</span></div>
+    <div class="grid3">
+      <div class="focus-card">
+        <div class="label">01</div>
+        <h3>OT/ICS Security</h3>
+        <p>PLC and SCADA attack-surface analysis, protocol-level access control, Purdue Model segmentation.</p>
+      </div>
+      <div class="focus-card">
+        <div class="label">02</div>
+        <h3>Network Security</h3>
+        <p>TCP/IP, VLANs, routing, and defense-in-depth applied to converged IT/OT environments.</p>
+      </div>
+      <div class="focus-card">
+        <div class="label">03</div>
+        <h3>Detection Engineering</h3>
+        <p>SIEM pipelines and custom detection rules mapped to MITRE ATT&amp;CK, from telemetry to alert.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="work">
+    <div class="section-head">
+      <span class="label">02 — CASE STUDIES</span>
+      <span class="label">3 — PROJECTS</span>
+    </div>
+    <div class="cases">
+      <div class="case">
+        <div class="sev"><span class="on"></span><span class="on"></span><span class="on"></span><span class="on"></span><span></span></div>
+        <p class="claim">Verified 2 CVEs against CISA/NVD and disproved 2 more traced to unrelated vendors — before trusting a single finding.</p>
+        <div class="case-foot">
+          <div class="mono-box">S7</div>
+          <div><div class="name">Siemens S7-1200</div><div class="role">Vulnerability Assessment</div></div>
+        </div>
+        <a class="link" href="https://github.com/mkhattab1111/siemens-s7-1200-vulnerability-assessment" target="_blank" rel="noopener">VIEW ON GITHUB →</a>
+      </div>
+      <div class="case dark">
+        <div class="sev"><span class="on"></span><span class="on"></span><span class="on"></span><span class="on"></span><span class="on"></span></div>
+        <p class="claim">A CVSS 9.8 flaw let an attacker rewrite PLC logic with zero tamper detection — and no patch exists.</p>
+        <div class="case-foot">
+          <div class="mono-box">PC</div>
+          <div><div class="name">Phoenix Contact ILC 171</div><div class="role">Hardware Security Assessment</div></div>
+        </div>
+        <a class="link" href="https://github.com/mkhattab1111/phoenix-contact-ilc171-hardware-security-assessment" target="_blank" rel="noopener">VIEW ON GITHUB →</a>
+      </div>
+      <div class="case">
+        <div class="sev"><span class="on"></span><span class="on"></span><span></span><span></span><span></span></div>
+        <p class="claim">The agent reported healthy while telemetry silently died — the network was the real detection gap.</p>
+        <div class="case-foot">
+          <div class="mono-box">ES</div>
+          <div><div class="name">Elastic Stack</div><div class="role">Threat-Detection Pipeline</div></div>
+        </div>
+        <a class="link" href="https://github.com/mkhattab1111/elastic-stack-threat-detection-pipeline" target="_blank" rel="noopener">VIEW ON GITHUB →</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="certs">
+    <div class="section-head"><span class="label">03 — CERTIFICATIONS</span></div>
+    <div class="certs">
+      <div><span>OT Cybersecurity Bootcamp — CyManII</span><span class="date">AUG–SEP 2026</span></div>
+      <div><span>ICS Cybersecurity Practices (100W) — CISA</span><span class="date">APR 2026</span></div>
+      <div><span>Differences in Deployments of ICS (210W) — CISA</span><span class="date">01 &amp; 02 COMPLETE</span></div>
+      <div><span>CCNA 200-301 — Self-Study</span><span class="date">IN PROGRESS</span></div>
+      <div><span>Network Security Course — NTI, MCIT</span><span class="date">AUG–SEP 2025</span></div>
+    </div>
+  </section>
+
+  <section id="skills">
+    <div class="section-head"><span class="label">04 — SKILLS</span></div>
+    <div class="skill-row"><b>Networking &amp; OT/ICS:</b> <span>TCP/IP, VLANs, OSPF/BGP, PROFINET, S7comm, OPC UA, Modbus, Purdue Model</span></div>
+    <div class="skill-row"><b>Security Operations:</b> <span>Vulnerability Assessment, Threat Modeling, CVE Analysis, MITRE ATT&amp;CK, SIEM, Detection Engineering</span></div>
+    <div class="skill-row"><b>OT/ICS Security:</b> <span>PLC Security, Attack Surface Analysis, Protocol-Level Access Control, Cyber-Informed Engineering</span></div>
+    <div class="skill-row"><b>Tools:</b> <span>Wireshark, Nmap, Kali Linux, Elastic Stack, Splunk, Metasploit, Burp Suite</span></div>
+  </section>
+</div>
+
+<footer id="contact">
+  <div class="wrap">
+    <div class="contact-links">
+      <a href="https://github.com/mkhattab1111" target="_blank" rel="noopener">GITHUB</a>
+      <a href="https://www.linkedin.com/in/mohamed-khattab11" target="_blank" rel="noopener">LINKEDIN</a>
+      <a href="mailto:mohamedkhattab1892@gmail.com">EMAIL</a>
+    </div>
+    <div class="fine">CAIRO, EGYPT · MANSOURA UNIVERSITY</div>
+  </div>
+</footer>
+
+</body>
+</html>
